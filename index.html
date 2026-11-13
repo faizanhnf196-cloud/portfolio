@@ -52,10 +52,13 @@ h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
 .hero-photo::before{z-index:1;content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0C1F3D 0%,rgba(12,31,61,.9) 12%,rgba(12,31,61,.4) 26%,rgba(12,31,61,0) 42%)}
 .hero-photo::after{z-index:1;content:"";position:absolute;inset:auto 0 0 0;height:120px;background:linear-gradient(0deg,#081428,rgba(8,20,40,0))}
 .hero{position:relative;z-index:2;padding:30px 24px 70px}
-.hero-copy{max-width:600px}
+.hero-copy{max-width:680px}
 .eyebrow{font-family:var(--mono);font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:#9FB3C8;margin:0 0 14px}
 .hero h1{font-size:clamp(40px,5vw,64px);white-space:nowrap;font-weight:800;letter-spacing:-.02em}
-.role{font-family:var(--display);color:var(--teal-bright);font-weight:700;font-size:clamp(28px,4vw,44px);margin:6px 0 20px;line-height:1.1}
+.role{font-family:var(--display);color:var(--teal-bright);font-weight:700;font-size:clamp(26px,3vw,38px);margin:6px 0 10px;line-height:1.1}
+.roles{font-family:var(--display);font-weight:600;font-size:clamp(14px,1.35vw,17px);color:#E6EDF4;margin:0 0 22px;display:flex;flex-wrap:wrap;align-items:center;row-gap:4px}
+.roles span{white-space:nowrap}
+.roles i{font-style:normal;color:var(--gold);margin:0 6px}
 .lede{color:#DCE4EC;font-size:21px;line-height:1.5;margin:0 0 30px;max-width:30ch}
 .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:540px}
 .stat{display:flex;align-items:center;gap:16px;background:rgba(17,40,72,.8);border:1px solid rgba(110,170,230,.12);border-radius:16px;padding:18px 20px}
@@ -167,7 +170,7 @@ footer{padding:32px 0 48px;color:var(--muted);font-size:14px}
     <nav class="nav" aria-label="Main">
       <a class="brand" href="#top">
         <svg class="mono" viewBox="0 0 48 40" aria-hidden="true"><path d="M4 36V6l20 18L44 6v30" fill="none" stroke="url(#mg)" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3FE6D3"/><stop offset="1" stop-color="#1E9BE0"/></linearGradient></defs></svg>
-        <span><b>Muhammad Faizan</b><small>Senior Odoo Developer</small></span>
+        <span><b>Muhammad Faizan</b><small>Senior Odoo Technical Consultant</small></span>
       </a>
       <ul>
         <li><a href="#about">About</a></li>
@@ -184,7 +187,8 @@ footer{padding:32px 0 48px;color:var(--muted);font-size:14px}
     <div class="hero-copy">
       <p class="eyebrow">Odoo ERP · Dubai, UAE</p>
       <h1>Muhammad Faizan</h1>
-      <p class="role">Senior Odoo Developer</p>
+      <p class="role">Senior Odoo Technical Consultant</p>
+      <p class="roles"><span>Senior Odoo Developer</span><i>|</i><span>AI, Integrations &amp; Migrations</span><i>|</i><span>Odoo Apps Publisher</span></p>
       <p class="lede">Building Odoo solutions that save time and deliver real business value, from field-service platforms to AI.</p>
       <div class="stats">
         <div class="stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="gold-i"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg><div><b>7+</b><span>Years of Odoo experience</span></div></div>
