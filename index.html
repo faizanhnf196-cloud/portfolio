@@ -145,6 +145,10 @@ section{padding:72px 0}
 /* video */
 .video{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#0B1D3A;aspect-ratio:16/9}
 .video-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:-8px 0 0}
+.video-row.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.video.small .play-badge{padding:7px 14px;font-size:13px;white-space:nowrap;gap:6px}
+.video.small .play-badge svg{width:14px;height:14px}
+@media (max-width:900px){.video-row.three{grid-template-columns:1fr}}
 .video.small .play-badge{font-size:13px}
 @media (max-width:640px){.video-row{grid-template-columns:1fr}}
 .video-play{all:unset;display:block;position:relative;width:100%;height:100%;cursor:pointer}
@@ -279,23 +283,23 @@ footer{padding:32px 0 48px;color:var(--muted);font-size:14px}
         <div><h4>What I built</h4><p>An AI agent inside Odoo. People type a question in plain English or Arabic and get the key figures, a chart and a table from live data in standard and custom modules. Version 1.2 adds a live dashboard, sharing with colleagues, scheduled email reports, questions about attached PDF, Excel and Word files, and print-ready PDF reports.</p></div>
         <div><h4>The result</h4><p>Reports in a few clicks instead of days or weeks of development, with no risk to the data: every query is read-only and every question is logged.</p></div>
       </div>
-      <div class="video" id="ai-video">
-        <button type="button" class="video-play" data-video="" id="new-video-btn" aria-label="Play the AI Analyst 1.2 video">
-          <img src="assets/video_12.jpg" alt="" width="1280" height="720" loading="lazy">
-          <span class="play-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="8 5 19 12 8 19 8 5" fill="currentColor"/></svg>What's new in 1.2 (80 s)</span>
-        </button>
-      </div>
-      <div class="video-row">
-        <div class="video small">
-          <button type="button" class="video-play" data-video="JYMh8lQ-T4M" aria-label="Play the 48-second security video">
-            <img src="assets/video_sec.jpg" alt="" width="1280" height="720" loading="lazy">
-            <span class="play-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="8 5 19 12 8 19 8 5" fill="currentColor"/></svg>Is it safe? (48 s)</span>
-          </button>
-        </div>
+      <div class="video-row three">
         <div class="video small">
           <button type="button" class="video-play" data-video="Gx-9kmRQ2tE" aria-label="Play the 1-minute AI Analyst story">
             <img src="assets/video.jpg" alt="" width="1280" height="720" loading="lazy">
-            <span class="play-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="8 5 19 12 8 19 8 5" fill="currentColor"/></svg>The 1-minute story</span>
+            <span class="play-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="8 5 19 12 8 19 8 5" fill="currentColor"/></svg>1. The story (1 min)</span>
+          </button>
+        </div>
+        <div class="video small">
+          <button type="button" class="video-play" data-video="JYMh8lQ-T4M" aria-label="Play the 48-second security video">
+            <img src="assets/video_sec.jpg" alt="" width="1280" height="720" loading="lazy">
+            <span class="play-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="8 5 19 12 8 19 8 5" fill="currentColor"/></svg>2. Is it safe? (48 s)</span>
+          </button>
+        </div>
+        <div class="video small">
+          <button type="button" class="video-play" data-video="" data-file="assets/ai_analyst_1.2.mp4" id="new-video-btn" aria-label="Play the AI Analyst 1.2 video">
+            <img src="assets/video_12.jpg" alt="" width="1280" height="720" loading="lazy">
+            <span class="play-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="8 5 19 12 8 19 8 5" fill="currentColor"/></svg>3. New in 1.2 (80 s)</span>
           </button>
         </div>
       </div>
@@ -482,17 +486,22 @@ footer{padding:32px 0 48px;color:var(--muted);font-size:14px}
 </footer>
 <script>
 // >>> Paste the YouTube ID of the 1.2 video between the quotes (the part after "watch?v=") <<<
-var NEW_ID = '';
-if (!NEW_ID) {
-  // no 1.2 video yet: hide its player and link
-  document.getElementById('ai-video').style.display = 'none';
-  document.querySelectorAll('.new-video-link').forEach(function (a) { a.style.display = 'none'; });
-} else {
+// Until then, the 1.2 video plays from the copy in the assets folder.
+var NEW_ID = 't_Jp1HqHWj0';
+if (NEW_ID) {
   document.getElementById('new-video-btn').dataset.video = NEW_ID;
   document.querySelectorAll('.new-video-link').forEach(function (a) { a.href = 'https://www.youtube.com/watch?v=' + NEW_ID; });
+} else {
+  document.querySelectorAll('.new-video-link').forEach(function (a) { a.href = 'assets/ai_analyst_1.2.mp4'; });
 }
 document.querySelectorAll('.video-play').forEach(function (btn) {
   btn.addEventListener('click', function () {
+    if (!btn.dataset.video && btn.dataset.file) {
+      var v = document.createElement('video');
+      v.src = btn.dataset.file; v.controls = true; v.autoplay = true; v.playsInline = true;
+      v.style.cssText = 'width:100%;height:100%;display:block;background:#000';
+      btn.replaceWith(v); return;
+    }
     var f = document.createElement('iframe');
     f.src = 'https://www.youtube-nocookie.com/embed/' + btn.dataset.video + '?autoplay=1&rel=0';
     f.title = btn.getAttribute('aria-label');
