@@ -13,7 +13,7 @@
 <meta property="og:image" content="https://faizanhnf196-cloud.github.io/portfolio/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Muhammad Faizan, Senior Odoo Technical Consultant: 7+ years, 2 published apps, 500+ users supported">
+<meta property="og:image:alt" content="Muhammad Faizan, Senior Odoo Technical Consultant: 7+ years, 3 published apps, 500+ users supported">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Muhammad Faizan – Senior Odoo Technical Consultant">
 <meta name="twitter:description" content="Senior Odoo Technical Consultant in Dubai with 7+ years on Odoo v8–v20. Published apps: AI Analyst, a WooCommerce connector and Construction Contract Management. Available immediately.">
@@ -53,13 +53,18 @@ h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
 
 /* masthead */
 .mast{position:relative;overflow:hidden;color:#fff;background:linear-gradient(100deg,#08152B 0%,#0B1D3A 45%,#0E2546 100%)}
-.nav{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;flex-wrap:wrap}
+.nav{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;flex-wrap:nowrap}
 .brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none}
 .mono{width:48px;height:40px}
 .brand b{display:block;font-family:var(--display);font-size:19px;letter-spacing:-.01em}
 .brand small{display:block;color:#C9D3DE;font-size:14px}
-.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:30px;flex-wrap:wrap}
-.nav ul a{color:#E6EDF4;text-decoration:none;font-weight:500;font-size:16px}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px;flex-wrap:nowrap;white-space:nowrap}
+.connect{white-space:nowrap;flex:none}
+.brand{white-space:nowrap;flex:none}
+@media (max-width:1180px){.nav ul{gap:14px}.brand small{display:none}}
+@media (max-width:1100px){.nav ul{gap:11px}.nav ul a{font-size:14px}}
+@media (max-width:1040px){.nav ul{display:none}}
+.nav ul a{color:#E6EDF4;text-decoration:none;font-weight:500;font-size:15px}
 .nav ul a:hover{color:var(--teal-bright)}
 .connect{display:inline-flex;align-items:center;gap:8px;background:var(--teal-bright);color:var(--ink);font-weight:600;text-decoration:none;padding:12px 22px;border-radius:999px}
 .connect svg{width:18px;height:18px}
@@ -106,6 +111,7 @@ h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
   .stats{grid-template-columns:1fr 1fr}
 }
 @media (max-width:460px){.stats{grid-template-columns:1fr}.connect{display:none}}
+@media (max-width:520px){.connect{display:none}}
 
 /* sections */
 section{padding:72px 0}
@@ -129,6 +135,9 @@ section{padding:72px 0}
 .shots img{border-radius:10px;border:1px solid var(--line);width:100%;height:auto}
 .shots figcaption{font-size:14px;color:var(--muted)}
 .stack{display:flex;flex-direction:column;gap:16px}
+.more summary{cursor:pointer;font-weight:600;color:var(--teal);font-size:16px;padding:4px 0}
+.more summary:hover{text-decoration:underline}
+.more[open] summary{margin-bottom:10px}
 .built{margin:0;padding-left:20px;display:grid;gap:6px;font-size:16px}
 .links{display:flex;flex-wrap:wrap;gap:12px}
 .links a{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--line);border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;color:var(--ink);background:var(--paper)}
@@ -217,6 +226,7 @@ footer{padding:32px 0 48px;color:var(--muted);font-size:14px}
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#work">Published Apps</a></li>
+        <li><a href="#impact">Results</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -310,8 +320,8 @@ footer{padding:32px 0 48px;color:var(--muted);font-size:14px}
           <figure><img src="assets/ai_ppm.jpg" alt="PPM completion rate by team, answered from a custom field-service module" width="1200" height="675" loading="lazy"><figcaption>Works on custom modules too: PPM completion by team.</figcaption></figure>
         </div>
       </div>
-      <div>
-        <h4 class="kicker" style="margin-bottom:8px">How it works</h4>
+      <details class="more">
+        <summary>How it works: the technical details</summary>
         <ul class="built">
           <li>Tool-calling agent loop with native support for Anthropic, Google Gemini and OpenAI, including retries and model checks.</li>
           <li>Finds the right tables itself from Odoo's own field labels, so it understands custom modules without setup.</li>
@@ -321,7 +331,7 @@ footer{padding:32px 0 48px;color:var(--muted);font-size:14px}
           <li>Tested on every version: 224 automated security checks and 38 browser tests before each release.</li>
           <li>Excel, PDF and CSV downloads, scheduled email reports, and a full question and sharing log for administrators.</li>
         </ul>
-      </div>
+      </details>
       <div class="links">
         <a href="https://apps.odoo.com/apps/modules/20.0/fz_ai_exec_analyst"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>View on Odoo Apps Store</a>
         <a class="new-video-link" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg>Watch what's new in 1.2</a>
@@ -441,7 +451,7 @@ footer{padding:32px 0 48px;color:var(--muted);font-size:14px}
         <div class="job-head"><h3>Freelance Odoo Developer &amp; App Publisher</h3><span class="when">11/2026 – Present</span></div>
         <p class="where">Remote · Dubai, UAE</p>
         <ul>
-          <li>Built and published AI Analyst for Odoo 12 to 20 (three releases, now 1.2) and the WooCommerce ↔ Odoo connector (Odoo 18, 19, 20) on the Odoo Apps Store.</li>
+          <li>Built and published three apps on the Odoo Apps Store: AI Analyst for Odoo 12 to 20 (three releases, now 1.2), the WooCommerce ↔ Odoo connector (Odoo 18, 19, 20) and Construction Contract Management (Odoo 20).</li>
         </ul>
       </div>
       <div class="job">
